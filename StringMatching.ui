@@ -46,7 +46,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Import Folder</string>
+    <string>Clear</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_5">
@@ -86,19 +86,6 @@
    </property>
    <property name="text">
     <string>Naive</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_8">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>700</y>
-     <width>181</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Analysis</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit">
@@ -145,19 +132,6 @@
    </property>
    <property name="text">
     <string>PATTERN</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_9">
-   <property name="geometry">
-    <rect>
-     <x>530</x>
-     <y>700</y>
-     <width>181</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Clear</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="textEdit_2">

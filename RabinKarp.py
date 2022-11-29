@@ -1,9 +1,8 @@
-## String matching Algorithms
-## Robin-Karp ALgorithm
-## Knuth-Morris-Pratt Algorithm
-import os
+## String matching Algorithm
+## Rabin-Karp ALgorithm
+
 import time
-class StringMatching:
+class RabinKarp:
     def __init__(self,text,pattern, prime_number = 13):
         self.text = text
         self.pattern = pattern
@@ -17,7 +16,7 @@ class StringMatching:
         self.hash_text = 0    # hash value for txt
 
     
-    def RobinKarp(self):
+    def search(self):
 
         i = 0
         j = 0
@@ -55,29 +54,25 @@ class StringMatching:
                 if self.hash_text < 0:
                     self.hash_text = self.hash_text + self.prime_number
         
-        print(f"Pattern found {counter} times.")
-        # print(f"Pattern found on loactions: {location}.")
-        print(f"Total number of loop iterations: {iterator_outter_loop+iterator_inner_loop}.")
-        print(f"Expected Best or Average case time complexity:{self.pattern_length + self.text_length}.")
-        print(f"Expected Worst case time complexity:{self.pattern_length * self.text_length}.")
+        return (counter,iterator_inner_loop+iterator_outter_loop,self.pattern_length + self.text_length,self.pattern_length * self.text_length,location)
+        # print(f"Pattern found {counter} times.")
+        # # print(f"Pattern found on loactions: {location}.")
+        # print(f"Total number of loop iterations: {iterator_outter_loop+iterator_inner_loop}.")
+        # print(f"Expected Best or Average case time complexity:{self.pattern_length + self.text_length}.")
+        # print(f"Expected Worst case time complexity:{self.pattern_length * self.text_length}.")
 
 
 
 if __name__ == '__main__':
+    
+    file = open("The Complete Works of William Shakespeare.txt", "r", encoding='UTF-8')
+    doc = file.readlines() 
+    text = "".join(doc)
 
-    data_root = './presidential_debates'
-    data = []
-    for filename in os.listdir(data_root):
-        file = open(os.path.join(data_root,filename), encoding='UTF-8')
-        doc = file.readlines()
-        for s in doc:
-            data.append(s) 
-    text = "".join(data)
-
-    pattern = "President"
+    pattern = "Book"
     q = 11
-    SM = StringMatching(text,pattern,q)
+    SM = RabinKarp(text,pattern,q)
     start_time = time.time()
-    SM.RobinKarp()
+    SM.search()
     end_time = time.time()
     print(f"Time required for Robin-Karp execution:{end_time-start_time} sec.")
