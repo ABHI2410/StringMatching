@@ -1,10 +1,13 @@
 
 import sys
+import time 
 
 from PyQt6 import QtCore, QtGui
 from PyQt6.QtWidgets import *
+
 from form import Ui_Form
 from RabinKarp import RabinKarp
+from knuth_Morris import KMP
 
 
 
@@ -17,6 +20,7 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_3.clicked.connect(self.openFileNamesDialog)
         self.ui.pushButton_4.clicked.connect(self.clear)
         self.ui.pushButton_5.clicked.connect(self.rabinkarp_search)
+        self.ui.pushButton_6.clicked.connect(self.kmp)
         # self.ui.lineEdit.textChanged.connect(self.onTextChanged)
         self.stdout = ''
         self.style_for_success = "<span style=\" font-weight:bold; color:#4bb543;\" >"
@@ -63,12 +67,46 @@ class MainWindow(QMainWindow):
         text = self.ui.textEdit.toHtml()
         pattern = self.ui.lineEdit.text()
         if text != "" and pattern != "":
+            start = time.time()
             SM = RabinKarp(text,pattern)
             out = SM.search()
-            # self.ui.textEdit_2.append(f"Pattern found {out[0]:,} times.")
-            # self.ui.textEdit_2.append(f"Total number of loop iterations: {out[1]:,}.")
-            # self.ui.textEdit_2.append(f"Expected Best or Average case time complexity: {out[2]:,}.")
-            # self.ui.textEdit_2.append(f"Expected Worst case time complexity: {out[3]:,}.")
+            end = time.time()
+            total_time = end - start
+            self.ui.textEdit_2.append(f"Pattern found {out[0]:,} times.")
+            self.ui.textEdit_2.append(f"Total number of loop iterations: {out[1]:,}.")
+            self.ui.textEdit_2.append(f"Expected Best or Average case time complexity: {out[2]:,}.")
+            self.ui.textEdit_2.append(f"Expected Worst case time complexity: {out[3]:,}.")
+            self.ui.textEdit_2.append(f"Time Taken: {total_time} secs.")
+            self.stdout = f"Successfull....{self.style_for_success}OK{self.style_close}"
+            text = self.highlighter(out[4], text, pattern)
+            self.ui.textEdit.clear()
+            self.ui.textEdit.append(text)
+                
+        else:
+            if text == "" and pattern == "":
+                self.stdout = f"Empty Text and Pattern provided....{self.style_for_error}ERROR{self.style_close}"
+            elif text == "":
+                self.stdout = f"Empty Text....{self.style_for_error}ERROR{self.style_close}"
+            elif pattern == "":
+                self.stdout = f"Empty Pattern....{self.style_for_error}ERROR{self.style_close}"
+            else:
+                self.stdout =f"Something went wrong {self.style_for_error}ERROR{self.style_close}"
+        self.ui.textEdit_2.append(self.stdout)  
+
+    def kmp(self):
+        text = self.ui.textEdit.toHtml()
+        pattern = self.ui.lineEdit.text()
+        if text != "" and pattern != "":
+            start = time.time()
+            SM = KMP(text,pattern)
+            out = SM.search()
+            end = time.time()
+            total_time = end - start
+            self.ui.textEdit_2.append(f"Pattern found {out[0]:,} times.")
+            self.ui.textEdit_2.append(f"Total number of loop iterations: {out[1]:,}.")
+            self.ui.textEdit_2.append(f"Expected Best or Average case time complexity: {out[2]:,}.")
+            self.ui.textEdit_2.append(f"Expected Worst case time complexity: {out[3]:,}.")
+            self.ui.textEdit_2.append(f"Time Taken: {total_time} secs.")
             self.stdout = f"Successfull....{self.style_for_success}OK{self.style_close}"
             text = self.highlighter(out[4], text, pattern)
             self.ui.textEdit.clear()

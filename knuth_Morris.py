@@ -21,8 +21,10 @@ class KMP:
         prefix=self.compute_prefix_fun()
         q=0
         match_loc = []
+        loop_counter = 0
         for i in range(self.text_length):
-            while q and self.pattern[q]!=self.text[i]:
+            loop_counter += 1
+            if q and self.pattern[q]!=self.text[i]:
                 q=prefix[q-1]
             if self.pattern[q]==self.text[i]:
                 if q==self.pattern_length-1:
@@ -30,11 +32,11 @@ class KMP:
                     q = prefix[q]
                 else:
                     q=q+1
-        return match_loc
+        return (len(match_loc),loop_counter,self.text_length,self.text_length,match_loc)
 
 
 if __name__ == '__main__':        
     text="aaaaaaaa"
     pattern="aa"
     k=KMP(text,pattern)
-    print(k.search())s
+    print(k.search())
