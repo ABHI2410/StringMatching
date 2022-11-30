@@ -53,13 +53,14 @@ class RabinKarp:
 
                 if self.hash_text < 0:
                     self.hash_text = self.hash_text + self.prime_number
-        
+
         return (counter,iterator_inner_loop+iterator_outter_loop,self.pattern_length + self.text_length,self.pattern_length * self.text_length,location)
         # print(f"Pattern found {counter} times.")
         # # print(f"Pattern found on loactions: {location}.")
         # print(f"Total number of loop iterations: {iterator_outter_loop+iterator_inner_loop}.")
         # print(f"Expected Best or Average case time complexity:{self.pattern_length + self.text_length}.")
         # print(f"Expected Worst case time complexity:{self.pattern_length * self.text_length}.")
+
 
 
 
