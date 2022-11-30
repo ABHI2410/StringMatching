@@ -6,14 +6,6 @@ from PyQt6.QtWidgets import *
 from form import Ui_Form
 from RabinKarp import RabinKarp
 
-class MyHighlighter(QtGui.QSyntaxHighlighter):
-
-    def highlightBlock(self,pattern,position):
-        myClassFormat = QtGui.QTextCharFormat()
-        myClassFormat.setBackground(QtGui.QColor('yellow'))
-        length = len(pattern)
-        self.setFormat(position, length, myClassFormat)
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -22,6 +14,7 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_3.clicked.connect(self.openFileNamesDialog)
         self.ui.pushButton_4.clicked.connect(self.clear)
         self.ui.pushButton_5.clicked.connect(self.rabinkarp_search)
+        # self.ui.lineEdit.textChanged.connect(self.onTextChanged)
         self.stdout = ''
         self.style_for_success = "<span style=\" font-weight:bold; color:#4bb543;\" >"
         self.style_for_error = "<span style=\" font-weight:bold; color:#ff3333;\" >"
@@ -62,10 +55,12 @@ class MainWindow(QMainWindow):
             self.ui.textEdit_2.append(f"Expected Worst case time complexity: {out[3]:,}.")
             self.stdout = f"Successfull....{self.style_for_success}OK{self.style_close}"
             positions = out[4]
-            highlight = MyHighlighter(self.ui.textEdit)
             for item in positions:
-                highlight.highlightBlock(pattern, item)
-                
+                myClassFormat = QtGui.QTextCharFormat()
+                myClassFormat.setBackground(QtGui.QColor('yellow'))
+                cursor = QtGui.QTextCursor(self.ui.textEdit.document())
+                cursor.setPosition(item)
+                cursor.setCharFormat(myClassFormat)
                 
 
         else:
