@@ -61,7 +61,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "String Matching"))
         self.pushButton_3.setText(_translate("Form", "Import File"))
         self.pushButton_4.setText(_translate("Form", "Clear"))
         self.pushButton_5.setText(_translate("Form", "Rabin-Karp Algorithm"))
