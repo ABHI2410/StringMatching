@@ -39,4 +39,9 @@ if __name__ == '__main__':
     text="aaaaaaaa"
     pattern="aa"
     k=KMP(text,pattern)
-    print(k.search())
+    out = k.search()
+    print(f"Pattern found {out[0]:,} times.")
+    print(f"Pattern found on loactions: {out[4]}.")
+    print(f"Total number of loop iterations: {out[1]:,}.")
+    print(f"Expected Best or Average case time complexity:{out[2]:,}.")
+    print(f"Expected Worst case time complexity:{out[3]:,}.")
