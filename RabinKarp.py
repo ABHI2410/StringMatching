@@ -1,7 +1,6 @@
 ## String matching Algorithm
 ## Rabin-Karp ALgorithm
 
-import time
 class RabinKarp:
     def __init__(self,text,pattern, prime_number = 13):
         self.text = text
@@ -55,11 +54,7 @@ class RabinKarp:
                     self.hash_text = self.hash_text + self.prime_number
 
         return (counter,iterator_inner_loop+iterator_outter_loop,self.pattern_length + self.text_length,self.pattern_length * self.text_length,location)
-        # print(f"Pattern found {counter} times.")
-        # # print(f"Pattern found on loactions: {location}.")
-        # print(f"Total number of loop iterations: {iterator_outter_loop+iterator_inner_loop}.")
-        # print(f"Expected Best or Average case time complexity:{self.pattern_length + self.text_length}.")
-        # print(f"Expected Worst case time complexity:{self.pattern_length * self.text_length}.")
+        
 
 
 
@@ -73,7 +68,9 @@ if __name__ == '__main__':
     pattern = "Book"
     q = 11
     SM = RabinKarp(text,pattern,q)
-    start_time = time.time()
-    SM.search()
-    end_time = time.time()
-    print(f"Time required for Robin-Karp execution:{end_time-start_time} sec.")
+    out = SM.search()
+    print(f"Pattern found {out[0]:,} times.")
+    print(f"Pattern found on loactions: {out[4]}.")
+    print(f"Total number of loop iterations: {out[1]:,}.")
+    print(f"Expected Best or Average case time complexity:{out[2]:,}.")
+    print(f"Expected Worst case time complexity:{out[3]:,}.")
