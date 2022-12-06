@@ -25,10 +25,10 @@ This project provides implementation of 3 string matching algorithms.
 
 
 ## Team Members:
-| Sr.No. | Name | Git Profile |
-|:--:|:--:|:--:|:--:|
-| 1. | Abhishek Patel | ABHI2410 |
-| 2. | Akhila Thota | akhilathota1999 |
+|Sr.No.|Name|Git Profile|
+|------|------|------|
+|1.|Abhishek Patel|ABHI2410| 
+|2.|Akhila Thota|akhilathota1999| 
 
 
 ## Files Deatils
