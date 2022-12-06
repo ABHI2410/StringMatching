@@ -5,10 +5,10 @@ import time
 from PyQt6 import QtCore, QtGui
 from PyQt6.QtWidgets import *
 
-from form import Ui_Form
-from RabinKarp import RabinKarp
-from knuth_Morris import KMP
-from Naive import Naive
+from .form import Ui_Form
+from ..StringMatching.RabinKarp import RabinKarp
+from ..StringMatching.knuth_Morris import KMP
+from ..StringMatching.Naive import Naive
 
 
 
